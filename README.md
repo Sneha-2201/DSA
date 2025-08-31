@@ -15,7 +15,7 @@ Everything below updates *automatically every day* ⚡.
 
 - *LeetCode Stats & Heatmap:*  
   <p align="center">
-    <img src="https://leetcard.jacoblin.cool/Sneha2211?theme=light&font=JetBrains%20Mono&ext=heatmap" />
+    <img src="https://leetcard.jacoblin.cool/snehashukla_?theme=light&font=JetBrains%20Mono&ext=heatmap" />
   </p>
 
 ---
