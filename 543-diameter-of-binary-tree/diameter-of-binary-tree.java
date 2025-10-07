@@ -14,25 +14,25 @@
  * }
  */
 class Solution {
-    private int diameter = 0; // To store maximum diameter found
+    int max = 0; // stores the maximum diameter found
 
     public int diameterOfBinaryTree(TreeNode root) {
-        height(root);
-        return diameter;
+        height(root); // helper function to calculate height
+        return max;   // max will have the diamet
     }
-    // Function to calculate height of a node
-    private int height(TreeNode node) {
+
+        private int height(TreeNode node) {
         if (node == null) return 0;
 
-        int leftHeight = height(node.left);
-        int rightHeight = height(node.right);
+        int left = height(node.left);
+        int right = height(node.right);
 
-        // Update diameter if path through this node is larger
-        diameter = Math.max(diameter, leftHeight + rightHeight);
+        // update max diameter if path through current node is larger
+        max = Math.max(max, left + right);
 
-        // Return height of current node
-        return 1 + Math.max(leftHeight, rightHeight);
+        // return height of current node
+        return 1 + Math.max(left, right);
 
+        
     }
-
 }
