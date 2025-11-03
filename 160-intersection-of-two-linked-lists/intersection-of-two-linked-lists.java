@@ -11,21 +11,39 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null) return null;
-        
-        ListNode p1 = headA;
-        ListNode p2 = headB;
-        
-        // Traverse both lists. When one pointer reaches the end,
-        // redirect it to the head of the other list.
-        while (p1 != p2) {
-            p1 = (p1 == null) ? headB : p1.next;
-            p2 = (p2 == null) ? headA : p2.next;
-        }
-        
-        // Either both are null (no intersection) or at the intersection node
-        return p1;
+        if(headA == null || headB == null)return null;
+        ListNode temp1 = headA;
+        ListNode temp2 = headB;
 
-        
+
+        int count1 =0;
+        while(temp1 !=null){
+            temp1 = temp1.next;
+            count1++;
+        }
+        temp1 = headA;
+        int count2 = 0;
+        while(temp2 != null){
+            temp2 = temp2.next;
+            count2++;
+        }
+        temp2 = headB;
+        int count = Math.abs(count1-count2);
+
+        if(count1> count2){
+          for(int i =0; i<count ; i++){
+            temp1 = temp1.next;
+          }
+        }else{
+             for(int i =0; i<count ; i++){
+               temp2 = temp2.next;
+            }
+
+        }
+        while(temp1!=temp2){
+            temp1 =temp1.next;
+            temp2 = temp2.next;
+        }
+        return temp1;
     }
 }
