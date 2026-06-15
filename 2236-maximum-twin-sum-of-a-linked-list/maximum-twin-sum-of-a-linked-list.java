@@ -9,44 +9,36 @@
  * }
  */
 class Solution {
-    public ListNode reverse(ListNode head){
-        ListNode curr = head;
-        ListNode prev = null;
-        ListNode after = null;
-        while(curr!= null){
-            after = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = after;
-        }
-        return prev;
-
-    }
-
     public int pairSum(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = head;
-        while(fast.next!=null && fast.next.next!=null){
+        ListNode slow = head ;
+         ListNode fast = head ;
+        while(fast!=null){
             slow = slow.next;
             fast = fast.next.next;
-        }
-        ListNode temp = reverse(slow.next);
-        slow.next = temp;
-        int maxSum = 0;
-        ListNode p1 = head;
-        ListNode p2 = slow.next;
-        
-        while(p2!=null){
-            int sum = p1.val + p2.val;
-            if(maxSum< sum ){
-                maxSum = sum;
-            }
-            p1 = p1.next;
-            p2 = p2.next;
-
 
         }
-        return maxSum;
-        
+        int max =Integer.MIN_VALUE ;
+        ListNode agla =null;
+        ListNode prev = null;
+        ListNode curr = slow;
+        while(agla!=null|| curr!=null){
+           agla = curr.next;
+           curr.next = prev ;
+           prev = curr;
+           curr = agla;
+           
+        }
+        ListNode temp1 = head;
+        ListNode temp2 = prev;
+        while(temp2!=null){
+             int sum = temp1.val + temp2.val;
+             if(sum>max){
+                max = sum;
+             }
+             temp1 = temp1.next ;
+             temp2 = temp2.next;
+        }
+
+        return max;
     }
 }
