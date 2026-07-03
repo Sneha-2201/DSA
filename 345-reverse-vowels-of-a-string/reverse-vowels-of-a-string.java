@@ -1,27 +1,28 @@
 class Solution {
     public String reverseVowels(String s) {
-        char[] arr= s.toCharArray();
-        int left =0 , right = arr.length-1;
-
-        while(left<right){
-            if(!isVowel(arr[left])){
-                left++;
-            }else if (!isVowel(arr[right])){
-                right--;
-            }else {
-                char temp = arr[left];
-                arr[left]= arr[right];
-                arr[right]=temp;
-                left++;
-                right--;
-            }
+      StringBuilder sb = new StringBuilder(s);
+      Set <Character> vowels =  Set.of('a','e','o','i','u','A','E','I','O','U');
+      int left = 0;
+      int right = s.length()-1;
+      while(left<right){
+        if((vowels.contains(s.charAt(left))) && (vowels.contains(s.charAt(right)))){
+            char temp = s.charAt(left);
+            sb.setCharAt(left , s.charAt(right));
+            sb.setCharAt(right , temp);
+            left++;
+            right--;
         }
-        return new String(arr);
-        
-    }
-    private boolean isVowel(char c){
-        c = Character.toLowerCase(c);
-        return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
-
+        else if ((!vowels.contains(s.charAt(left))) && (!vowels.contains(s.charAt(right)))){
+            left++;
+            right--;
+        }
+        else if ((!vowels.contains(s.charAt(left))) && (vowels.contains(s.charAt(right)))){
+            left++;
+        }
+        else if ((vowels.contains(s.charAt(left))) && (!vowels.contains(s.charAt(right)))){
+            right--;
+        }
+      }
+      return sb.toString();
     }
 }
